@@ -1,0 +1,77 @@
+/* 1. ELEMENT SELECTORS */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+    margin: 0;
+    padding: 30px;
+}
+
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+h2 {
+    color: #34495e;
+    border-bottom: 2px solid #bdc3c7;
+    padding-bottom: 5px;
+    margin-top: 30px;
+}
+
+/* 2. CLASS SELECTORS */
+
+/* Making the video link visually appealing and interactive  */
+.video-link {
+  color: #bd1989; /* Initial color */
+  text-decoration: none; /* Removes the default underline */
+  font-weight: bold;
+  
+  display: inline-block; 
+  
+  transition: transform 0.3s ease, color 0.3s ease; 
+}
+
+.video-link:hover {
+  color: #1ad227; /* The new color on hover */
+  
+  transform: translateY(-5px); 
+}
+
+/* Making the input section visually distinct */
+.add-expense {
+    background-color: #ffffff;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-left: 5px solid #3498db;
+}
+
+/* Making the placeholder section visually distinct */
+.your-expense {
+    background-color: #e8f8f5;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-left: 5px solid #1abc9c;
+}
+
+/* 3. ID SELECTORS */
+/* Styling the specific input elements */
+#expense-name, #expense-amount, #expense-category, #your-expense-name {
+    padding: 10px;
+    margin: 10px 15px 15px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+#web-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
