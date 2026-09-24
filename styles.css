@@ -20,6 +20,10 @@ h2 {
     margin-top: 30px;
 }
 
+label {
+    font-weight: 500;
+}
+
 /* 2. CLASS SELECTORS */
 
 /* Making the video link visually appealing and interactive  */
@@ -61,12 +65,20 @@ h2 {
 
 /* 3. ID SELECTORS */
 /* Styling the specific input elements */
-#expense-name, #expense-amount, #expense-category, #your-expense-name {
+#expense-name, #expense-amount, #expense-category {
     padding: 10px;
     margin: 10px 15px 15px 0;
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 14px;
+}
+
+/* Styling the paragraph replacement */
+#your-expense-name {
+    font-size: 14px;
+    color: #555;
+    font-style: italic;
+    margin-top: 10px;
 }
 
 #web-image {
