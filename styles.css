@@ -161,7 +161,7 @@ input:focus, select:focus {
 }
 
 /* Styling the specific input and select elements */
-#expense-name, #expense-amount, #expense-category {
+#expense-name, #expense-amount, #expense-category, #expense-date {
     padding: 10px;
     margin: 10px 15px 15px 0;
     border: 1px solid #ccc;
