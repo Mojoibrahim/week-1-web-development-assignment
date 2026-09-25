@@ -82,6 +82,30 @@ button:hover {
 
 /* 2. CLASS SELECTORS */
 
+/* Guide Styling */
+.expense-guide {
+    background-color: #f8f9fa;
+    padding: 10px 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #bdc3c7;
+    font-size: 14px;
+}
+
+.expense-guide summary {
+    font-weight: 600;
+    cursor: pointer;
+    color: #2c3e50;
+    outline: none;
+}
+
+.expense-guide ol {
+    margin-top: 10px;
+    margin-bottom: 0;
+    padding-left: 20px;
+    color: #555;
+}
+
 /* Video Section Styling */
 .video-section {
     background-color: #ffffff;
