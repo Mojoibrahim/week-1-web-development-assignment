@@ -13,6 +13,12 @@ h1 {
     margin-bottom: 10px;
 }
 
+.logo-img {
+    vertical-align: middle;
+    margin-right: 8px;
+    height: 40px;
+}
+
 h2 {
     color: #34495e;
     border-bottom: 2px solid #bdc3c7;
@@ -24,26 +30,75 @@ label {
     font-weight: 500;
 }
 
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border: 1px solid #bdc3c7;
+}
+
+th {
+    background-color: #1abc9c;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+/* Positional Pseudo-class */
+tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+/* Descendant Selector & Table Row Hover Effect */
+tbody tr:hover {
+    background-color: #e1e8ed;
+    transition: background-color 0.2s ease;
+}
+
+/* Button Styles */
+button {
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    margin: 10px 15px 15px 0;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
 /* 2. CLASS SELECTORS */
 
-/* Making the video link visually appealing and interactive  */
-.video-link {
-  color: #bd1989; /* Initial color */
-  text-decoration: none; /* Removes the default underline */
-  font-weight: bold;
-  
-  display: inline-block; 
-  
-  transition: transform 0.3s ease, color 0.3s ease; 
+/* Video Section Styling */
+.video-section {
+    background-color: #ffffff;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-left: 5px solid #9b59b6;
+    text-align: center;
 }
 
-.video-link:hover {
-  color: #1ad227; /* The new color on hover */
-  
-  transform: translateY(-5px); 
+iframe {
+    max-width: 100%;
+    border-radius: 6px;
+    margin-top: 10px;
 }
 
-/* Making the input section visually distinct */
 .add-expense {
     background-color: #ffffff;
     padding: 20px;
@@ -53,7 +108,6 @@ label {
     border-left: 5px solid #3498db;
 }
 
-/* Making the placeholder section visually distinct */
 .your-expense {
     background-color: #e8f8f5;
     padding: 20px;
@@ -63,22 +117,33 @@ label {
     border-left: 5px solid #1abc9c;
 }
 
-/* 3. ID SELECTORS */
-/* Styling the specific input elements */
+/* 3. ID & ADVANCED SELECTORS */
+
+/* Direct Child Selector */
+.add-expense > form {
+    margin-top: 10px;
+}
+
+/* Negation Pseudo-class */
+input:not([type="submit"]) {
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Focus State */
+input:focus, select:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.4);
+    outline: none;
+}
+
+/* Styling the specific input and select elements */
 #expense-name, #expense-amount, #expense-category {
     padding: 10px;
     margin: 10px 15px 15px 0;
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 14px;
-}
-
-/* Styling the paragraph replacement */
-#your-expense-name {
-    font-size: 14px;
-    color: #555;
-    font-style: italic;
-    margin-top: 10px;
+    background-color: #ffffff;
 }
 
 #web-image {
