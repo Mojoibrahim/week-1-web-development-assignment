@@ -1,15 +1,21 @@
 /* 1. ELEMENT SELECTORS */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     background-color: #f4f7f6;
     color: #333;
     margin: 0;
     padding: 30px;
 }
 
+/* Heading Font Family */
+h1, h2, h3 {
+    font-family: 'Montserrat', sans-serif;
+}
+
 h1 {
     text-align: center;
     color: #2c3e50;
+    margin-top: 0;
     margin-bottom: 10px;
 }
 
@@ -20,14 +26,23 @@ h1 {
 }
 
 h2 {
-    color: #34495e;
-    border-bottom: 2px solid #bdc3c7;
-    padding-bottom: 5px;
-    margin-top: 30px;
+    color: #7f8c8d;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 500;
+    margin-top: 5px;
+    margin-bottom: 0;
+    border-bottom: none;
+    padding-bottom: 0;
 }
 
 label {
     font-weight: 500;
+}
+
+/* Ensure Form Controls & Inputs Use Body Font */
+input, select, button {
+    font-family: 'Open Sans', sans-serif;
 }
 
 /* Table Styles */
@@ -80,7 +95,37 @@ button:hover {
     background-color: #2980b9;
 }
 
-/* 2. CLASS SELECTORS */
+/* 2. CLASS SELECTORS & VISUAL CARDS */
+
+/* Page Header Card */
+.header-card {
+    background-color: #ffffff;
+    padding: 25px 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-top: 5px solid #2c3e50;
+}
+
+/* Add Expense Form Card */
+.add-expense {
+    background-color: #ffffff;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-left: 5px solid #3498db;
+}
+
+/* Expense Table Card */
+.your-expense {
+    background-color: #ffffff;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-left: 5px solid #1abc9c;
+}
 
 /* Guide Styling */
 .expense-guide {
@@ -121,24 +166,6 @@ iframe {
     max-width: 100%;
     border-radius: 6px;
     margin-top: 10px;
-}
-
-.add-expense {
-    background-color: #ffffff;
-    padding: 20px;
-    margin: 20px 0;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-left: 5px solid #3498db;
-}
-
-.your-expense {
-    background-color: #e8f8f5;
-    padding: 20px;
-    margin: 20px 0;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-left: 5px solid #1abc9c;
 }
 
 /* 3. ID & ADVANCED SELECTORS */
