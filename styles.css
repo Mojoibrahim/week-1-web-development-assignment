@@ -1,165 +1,399 @@
-/* 1. ELEMENT SELECTORS */
+/* ==========================================================================
+   1. CSS CUSTOM PROPERTIES (THEMING)
+   ========================================================================== */
+:root {
+    /* Brand & Core Palette */
+    --brand-color: #2c3e50;
+    --accent-color: #3498db;
+    --secondary-accent: #1abc9c;
+    --highlight-color: #9b59b6;
+
+    /* Backgrounds & Surfaces */
+    --bg-color: #f4f7f6;
+    --surface-color: #ffffff;
+    --surface-subtle: #f8f9fa;
+    --border-color: #bdc3c7;
+    --border-light: #e1e8ed;
+
+    /* Typography Colors */
+    --text-primary: #2c3e50;
+    --text-secondary: #7f8c8d;
+    --text-muted: #555555;
+    --text-inverse: #ffffff;
+
+    /* Shadows & Elevation */
+    --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
+    --card-shadow-hover: 0 10px 20px rgba(0, 0, 0, 0.15);
+
+    /* Fonts */
+    --font-heading: 'Montserrat', sans-serif;
+    --font-body: 'Open Sans', sans-serif;
+}
+
+/* Stretch Goal: Dark Theme Override */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --brand-color: #3b82f6;
+        --accent-color: #60a5fa;
+        --secondary-accent: #2dd4bf;
+        --highlight-color: #c084fc;
+
+        --bg-color: #0f172a;
+        --surface-color: #1e293b;
+        --surface-subtle: #334155;
+        --border-color: #334155;
+        --border-light: #1e293b;
+
+        --text-primary: #f8fafc;
+        --text-secondary: #94a3b8;
+        --text-muted: #cbd5e1;
+        --text-inverse: #0f172a;
+
+        --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        --card-shadow-hover: 0 10px 20px rgba(0, 0, 0, 0.5);
+    }
+}
+
+/* ==========================================================================
+   2. GLOBAL RESETS & BASE STYLES
+   ========================================================================== */
+* {
+    box-sizing: border-box;
+}
+
 body {
-    font-family: 'Open Sans', sans-serif;
-    background-color: #f4f7f6;
-    color: #333;
+    font-family: var(--font-body);
+    background-color: var(--bg-color);
+    color: var(--text-primary);
     margin: 0;
-    padding: 30px;
+    padding: 0;
+    line-height: 1.5;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Heading Font Family */
 h1, h2, h3 {
-    font-family: 'Montserrat', sans-serif;
-}
-
-h1 {
-    text-align: center;
-    color: #2c3e50;
-    margin-top: 0;
-    margin-bottom: 10px;
-}
-
-.logo-img {
-    vertical-align: middle;
-    margin-right: 8px;
-    height: 40px;
-}
-
-h2 {
-    color: #7f8c8d;
-    text-align: center;
-    font-size: 16px;
-    font-weight: 500;
-    margin-top: 5px;
-    margin-bottom: 0;
-    border-bottom: none;
-    padding-bottom: 0;
+    font-family: var(--font-heading);
 }
 
 label {
     font-weight: 500;
+    color: var(--text-primary);
 }
 
-/* Ensure Form Controls & Inputs Use Body Font */
 input, select, button {
-    font-family: 'Open Sans', sans-serif;
+    font-family: var(--font-body);
 }
 
-/* Table Styles */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 15px;
-    background-color: #ffffff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+/* ==========================================================================
+   3. MAIN LAYOUT (CSS GRID)
+   ========================================================================== */
+.dashboard-container {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    min-height: 100vh;
 }
 
-th, td {
-    padding: 12px 15px;
+/* ==========================================================================
+   4. SIDEBAR NAVIGATION (FLEXBOX)
+   ========================================================================== */
+.sidebar {
+    background-color: var(--surface-color);
+    border-right: 1px solid var(--border-color);
+    padding: 24px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.sidebar-header {
+    display: flex;
+    align-items: center;
+}
+
+.sidebar-header h2 {
+    color: var(--brand-color);
+    margin: 0;
+    font-size: 1.5rem;
     text-align: left;
-    border: 1px solid #bdc3c7;
 }
 
-th {
-    background-color: #1abc9c;
-    color: #ffffff;
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.nav-item {
+    padding: 12px 16px;
+    text-decoration: none;
+    color: var(--text-secondary);
     font-weight: 600;
+    border-radius: 6px;
+    transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-/* Positional Pseudo-class */
-tr:nth-child(even) {
-    background-color: #f8f9fa;
+.nav-item:hover, 
+.nav-item:focus,
+.nav-item.active {
+    background-color: var(--surface-subtle);
+    color: var(--accent-color);
+    outline: none;
 }
 
-/* Descendant Selector & Table Row Hover Effect */
-tbody tr:hover {
-    background-color: #e1e8ed;
-    transition: background-color 0.2s ease;
+/* ==========================================================================
+   5. MAIN CONTENT AREA & HEADER (FLEXBOX)
+   ========================================================================== */
+.main-content {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
-/* Button Styles */
-button {
-    padding: 10px 20px;
-    background-color: #3498db;
-    color: #ffffff;
-    border: none;
-    border-radius: 4px;
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    margin: 10px 15px 15px 0;
-    transition: background-color 0.3s ease;
-}
-
-button:hover {
-    background-color: #2980b9;
-}
-
-/* 2. CLASS SELECTORS & VISUAL CARDS */
-
-/* Page Header Card */
+/* Header Card */
 .header-card {
-    background-color: #ffffff;
-    padding: 25px 20px;
-    margin-bottom: 20px;
+    background-color: var(--surface-color);
+    padding: 24px;
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-top: 5px solid #2c3e50;
+    box-shadow: var(--card-shadow);
+    border-top: 5px solid var(--brand-color);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
-/* Add Expense Form Card */
+.header-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.header-title h1 {
+    color: var(--text-primary);
+    margin: 0;
+    text-align: left;
+    font-size: 1.8rem;
+}
+
+.logo-img {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
+}
+
+.header-card h2 {
+    color: var(--text-secondary);
+    text-align: left;
+    font-size: 1rem;
+    font-weight: 500;
+    margin: 0;
+}
+
+/* ==========================================================================
+   6. CATEGORY CARDS (GRID + FLEXBOX + MICRO-INTERACTIONS)
+   ========================================================================== */
+.dashboard-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background-color: var(--surface-color);
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--card-shadow);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 6px;
+    cursor: pointer;
+    
+    /* Requirement 5: Animation <= 250ms */
+    transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;
+}
+
+.card h3 {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.card .amount {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+/* Requirement 5: Hover & Focus Micro-interactions */
+.card:hover,
+.card:focus {
+    transform: translateY(-4px);
+    box-shadow: var(--card-shadow-hover);
+    border-color: var(--accent-color);
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+/* ==========================================================================
+   7. ADD EXPENSE SECTION (FLEXBOX)
+   ========================================================================== */
 .add-expense {
-    background-color: #ffffff;
-    padding: 20px;
-    margin: 20px 0;
+    background-color: var(--surface-color);
+    padding: 24px;
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-left: 5px solid #3498db;
+    box-shadow: var(--card-shadow);
+    border-left: 5px solid var(--accent-color);
 }
 
-/* Expense Table Card */
-.your-expense {
-    background-color: #ffffff;
-    padding: 20px;
-    margin: 20px 0;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-left: 5px solid #1abc9c;
+.add-expense h3 {
+    margin-top: 0;
+    color: var(--text-primary);
 }
 
-/* Guide Styling */
 .expense-guide {
-    background-color: #f8f9fa;
-    padding: 10px 15px;
-    margin-bottom: 15px;
-    border-radius: 5px;
-    border: 1px solid #bdc3c7;
+    background-color: var(--surface-subtle);
+    padding: 12px 16px;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
     font-size: 14px;
+    margin-bottom: 20px;
 }
 
 .expense-guide summary {
     font-weight: 600;
     cursor: pointer;
-    color: #2c3e50;
-    outline: none;
+    color: var(--text-primary);
 }
 
 .expense-guide ol {
     margin-top: 10px;
     margin-bottom: 0;
     padding-left: 20px;
-    color: #555;
+    color: var(--text-muted);
 }
 
-/* Video Section Styling */
-.video-section {
-    background-color: #ffffff;
-    padding: 20px;
-    margin: 20px 0;
+/* Form Layout (Flexbox) */
+.add-expense > form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 16px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+input:not([type="submit"]), select {
+    padding: 10px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: var(--surface-color);
+    color: var(--text-primary);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus, select:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.25);
+    outline: none;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: var(--accent-color);
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    height: 40px;
+    transition: background-color 0.2s ease, opacity 0.2s ease;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+button:focus {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+/* ==========================================================================
+   8. EXPENSES TABLE SECTION
+   ========================================================================== */
+.your-expense {
+    background-color: var(--surface-color);
+    padding: 24px;
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-left: 5px solid #9b59b6;
+    box-shadow: var(--card-shadow);
+    border-left: 5px solid var(--secondary-accent);
+}
+
+.your-expense h3 {
+    margin-top: 0;
+    color: var(--text-primary);
+}
+
+.table-responsive {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    background-color: var(--surface-color);
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+}
+
+th {
+    background-color: var(--secondary-accent);
+    color: #ffffff;
+    font-weight: 600;
+}
+
+tr:nth-child(even) {
+    background-color: var(--surface-subtle);
+}
+
+tbody tr:hover {
+    background-color: var(--border-light);
+    transition: background-color 0.2s ease;
+}
+
+/* ==========================================================================
+   9. VIDEO SECTION
+   ========================================================================== */
+.video-section {
+    background-color: var(--surface-color);
+    padding: 24px;
+    border-radius: 8px;
+    box-shadow: var(--card-shadow);
+    border-left: 5px solid var(--highlight-color);
     text-align: center;
+}
+
+.video-section h3 {
+    margin-top: 0;
+    color: var(--text-primary);
 }
 
 iframe {
@@ -168,38 +402,46 @@ iframe {
     margin-top: 10px;
 }
 
-/* 3. ID & ADVANCED SELECTORS */
+/* ==========================================================================
+   10. RESPONSIVE DESIGN (MEDIA QUERIES)
+   ========================================================================== */
+/* Requirement 4: Collapse layout below 768px */
+@media (max-width: 768px) {
+    .dashboard-container {
+        grid-template-columns: 1fr;
+    }
 
-/* Direct Child Selector */
-.add-expense > form {
-    margin-top: 10px;
-}
+    .sidebar {
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+        padding: 16px 20px;
+    }
 
-/* Negation Pseudo-class */
-input:not([type="submit"]) {
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
+    .sidebar-nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
 
-/* Focus State */
-input:focus, select:focus {
-    border-color: #3498db;
-    box-shadow: 0 0 5px rgba(52, 152, 219, 0.4);
-    outline: none;
-}
+    .nav-item {
+        padding: 8px 12px;
+        font-size: 0.9rem;
+    }
 
-/* Styling the specific input and select elements */
-#expense-name, #expense-amount, #expense-category, #expense-date {
-    padding: 10px;
-    margin: 10px 15px 15px 0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 14px;
-    background-color: #ffffff;
-}
+    .main-content {
+        padding: 16px;
+    }
 
-#web-image {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    .add-expense > form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .form-group {
+        width: 100%;
+    }
+
+    input:not([type="submit"]), select, button {
+        width: 100%;
+    }
 }

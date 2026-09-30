@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>SpendWise</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpendWise - Dashboard</title>
     <!-- Google Fonts Import -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,113 +13,176 @@
 </head>
 <body>
 
-<!-- Header Card -->
-<header class="header-card">
-    <h1>
-        <img src="SpendWise-Logo.jpeg" alt="SpendWise Logo" width="40" class="logo-img">
-        My Budget Tracker
-    </h1>
-    <h2>Track your income and expenses in one place.</h2>
-</header>
+<!-- Dashboard Shell (CSS Grid Container) -->
+<div class="dashboard-container">
+    
+    <!-- Sidebar / Navigation Menu -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <h2>SpendWise</h2>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="#" class="nav-item active">Dashboard</a>
+            <a href="#" class="nav-item">Transactions</a>
+            <a href="#" class="nav-item">Budgets</a>
+            <a href="#" class="nav-item">Reports</a>
+            <a href="#" class="nav-item">Settings</a>
+        </nav>
+    </aside>
 
-<!-- Add Expense Card -->
-<section class="add-expense">
-        <h3>Add Expense</h3>
+    <!-- Main Content Area -->
+    <main class="main-content">
         
-        <details class="expense-guide">
-            <summary>Guide: How to record your expenses</summary>
-            <ol>
-                <li>Enter a brief description in the <strong>Expense name</strong> field.</li>
-                <li>Input the numerical value in the <strong>Amount</strong> field.</li>
-                <li>Select the best matching <strong>Category</strong> from the dropdown.</li>
-                <li>Choose the specific transaction <strong>Date</strong>.</li>
-                <li>Click <strong>Add Expense</strong> to record it to your tracker.</li>
-            </ol>
-        </details>
+        <!-- Header Card -->
+        <header class="header-card">
+            <div class="header-title">
+                <img src="SpendWise-Logo.jpeg" alt="SpendWise Logo" width="40" class="logo-img">
+                <h1>My Budget Tracker</h1>
+            </div>
+            <h2>Track your income and expenses in one place.</h2>
+        </header>
 
-        <form>
-            <label for="expense-name">The Expense name:</label>
-            <input type="text" id="expense-name" placeholder="Enter expense name">
+        <!-- Static Financial Category Cards (Grid Container) -->
+        <section class="dashboard-cards">
+            <div class="card" tabindex="0">
+                <h3>Food</h3>
+                <p class="amount">$350.00</p>
+            </div>
+            <div class="card" tabindex="0">
+                <h3>Transport</h3>
+                <p class="amount">$120.00</p>
+            </div>
+            <div class="card" tabindex="0">
+                <h3>Rent</h3>
+                <p class="amount">$1,200.00</p>
+            </div>
+            <div class="card" tabindex="0">
+                <h3>Entertainment</h3>
+                <p class="amount">$80.00</p>
+            </div>
+            <div class="card" tabindex="0">
+                <h3>Savings</h3>
+                <p class="amount">$500.00</p>
+            </div>
+            <div class="card" tabindex="0">
+                <h3>Utilities</h3>
+                <p class="amount">$150.00</p>
+            </div>
+        </section>
+
+        <!-- Add Expense Card -->
+        <section class="add-expense">
+            <h3>Add Expense</h3>
             
-            <label for="expense-amount">The Amount:</label>
-            <input type="number" id="expense-amount" placeholder="Enter amount">
-            
-            <label for="expense-category">The Category:</label>
-            <select id="expense-category">
-                <option value="" disabled selected>Select category</option>
-                <option value="Food">Food</option>
-                <option value="Transport">Transport</option>
-                <option value="Rent">Rent</option>
-                <option value="Entertainment">Entertainment</option>
-                <option value="Other">Other</option>
-            </select>
+            <details class="expense-guide">
+                <summary>Guide: How to record your expenses</summary>
+                <ol>
+                    <li>Enter a brief description in the <strong>Expense name</strong> field.</li>
+                    <li>Input the numerical value in the <strong>Amount</strong> field.</li>
+                    <li>Select the best matching <strong>Category</strong> from the dropdown.</li>
+                    <li>Choose the specific transaction <strong>Date</strong>.</li>
+                    <li>Click <strong>Add Expense</strong> to record it to your tracker.</li>
+                </ol>
+            </details>
 
-            <label for="expense-date">The Date:</label>
-            <input type="date" id="expense-date">
+            <form>
+                <div class="form-group">
+                    <label for="expense-name">The Expense name:</label>
+                    <input type="text" id="expense-name" placeholder="Enter expense name">
+                </div>
+                
+                <div class="form-group">
+                    <label for="expense-amount">The Amount:</label>
+                    <input type="number" id="expense-amount" placeholder="Enter amount">
+                </div>
+                
+                <div class="form-group">
+                    <label for="expense-category">The Category:</label>
+                    <select id="expense-category">
+                        <option value="" disabled selected>Select category</option>
+                        <option value="Food">Food</option>
+                        <option value="Transport">Transport</option>
+                        <option value="Rent">Rent</option>
+                        <option value="Entertainment">Entertainment</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
 
-            <button type="button">Add Expense</button>
-        </form>
-</section>
+                <div class="form-group">
+                    <label for="expense-date">The Date:</label>
+                    <input type="date" id="expense-date">
+                </div>
 
-<!-- Expense Table Card -->
-<section class="your-expense">
-        <h3>Your Expences</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Amount</th>
-                    <th>Category</th>
-                    <th>Date</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Groceries</td>
-                    <td>$85.50</td>
-                    <td>Food</td>
-                    <td>2026-09-20</td>
-                </tr>
-                <tr>
-                    <td>Electricity Bill</td>
-                    <td>$120.00</td>
-                    <td>Utilities</td>
-                    <td>2026-09-21</td>
-                </tr>
-                <tr>
-                    <td>Internet Subscription</td>
-                    <td>$60.00</td>
-                    <td>Utilities</td>
-                    <td>2026-09-22</td>
-                </tr>
-                <tr>
-                    <td>Coffee Shop</td>
-                    <td>$12.75</td>
-                    <td>Dining Out</td>
-                    <td>2026-09-23</td>
-                </tr>
-                <tr>
-                    <td>Gasoline</td>
-                    <td>$45.00</td>
-                    <td>Transportation</td>
-                    <td>2026-09-24</td>
-                </tr>
-            </tbody>
-        </table>
-</section>
+                <button type="button">Add Expense</button>
+            </form>
+        </section>
 
-<section class="video-section">
-    <h3>Budgeting Tips & Tricks</h3>
-    <iframe 
-    width="315" 
-    height="576" 
-    src="https://www.youtube.com/embed/8N2QAIuDjbQ" 
-    title="How to budget in excel for beginners" 
-    frameborder="0" 
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-    referrerpolicy="strict-origin-when-cross-origin" 
-    allowfullscreen></iframe>
-</section>
+        <!-- Expense Table Card -->
+        <section class="your-expense">
+            <h3>Your Expenses</h3>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Amount</th>
+                            <th>Category</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Groceries</td>
+                            <td>$85.50</td>
+                            <td>Food</td>
+                            <td>2026-09-20</td>
+                        </tr>
+                        <tr>
+                            <td>Electricity Bill</td>
+                            <td>$120.00</td>
+                            <td>Utilities</td>
+                            <td>2026-09-21</td>
+                        </tr>
+                        <tr>
+                            <td>Internet Subscription</td>
+                            <td>$60.00</td>
+                            <td>Utilities</td>
+                            <td>2026-09-22</td>
+                        </tr>
+                        <tr>
+                            <td>Coffee Shop</td>
+                            <td>$12.75</td>
+                            <td>Dining Out</td>
+                            <td>2026-09-23</td>
+                        </tr>
+                        <tr>
+                            <td>Gasoline</td>
+                            <td>$45.00</td>
+                            <td>Transportation</td>
+                            <td>2026-09-24</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Video Section -->
+        <section class="video-section">
+            <h3>Budgeting Tips &amp; Tricks</h3>
+            <iframe 
+                width="315" 
+                height="576" 
+                src="https://www.youtube.com/embed/8N2QAIuDjbQ" 
+                title="How to budget in excel for beginners" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                referrerpolicy="strict-origin-when-cross-origin" 
+                allowfullscreen>
+            </iframe>
+        </section>
+
+    </main>
+</div>
 
 <script src="script.js"></script>
 </body>
