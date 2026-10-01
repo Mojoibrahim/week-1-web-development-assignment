@@ -42,9 +42,33 @@ The dashboard is built using modern CSS layout techniques without relying on abs
 * **Purpose**: Educational area for financial literacy.
 * **Details**: Houses an embedded YouTube iframe video featuring budgeting tips for users.
 
----
 
 ## How to Run
 1. Open `index.html` directly in any standard web browser.
 2. Toggle device view in DevTools to test responsiveness below 768px.
 3. Switch your OS theme to dark mode to test auto-theming.
+
+
+# SpendWise - Budgeting Application
+
+## Project Overview
+
+**1. What your SpendWise project does**  
+SpendWise is a foundational personal finance application that helps users track their monthly spending. It takes a user's total budget and specific expenses, calculates how much money has been spent, and outputs a detailed summary report in the console that clearly displays the user's remaining balance.
+
+## Technical Details
+
+**2. The JavaScript concepts implemented**  
+The code implements several core JavaScript concepts, including variable declaration using `const`, data type conversion (using `parseFloat` to turn strings into numbers), browser interaction methods (`prompt()`), arithmetic operators (`+`, `-`), function declaration and invocation, string interpolation using template literals (backticks), and basic conditional logic (`if/else`) for outputting dynamic status messages.
+
+**3. How variables are being used**  
+Variables act as temporary storage containers throughout the application's lifecycle. They store the initial raw text typed by the user (`totalBudgetInput`), the parsed numeric versions of that text (`totalBudget`), the names of the expenses, and the final calculated totals (`totalExpenses`, `remainingBalance`). This allows the script to reference, pass around, and display the data at different stages.
+
+**4. How user input is collected**  
+User input is collected dynamically via the browser using the built-in `prompt()` method, which triggers popup dialog boxes asking the user for specific information. Because `prompt()` always captures data as a string (text), `parseFloat()` is immediately used to convert the inputted numbers into actual floating-point numeric values so they can be accurately used in mathematical operations. 
+
+**5. How calculations are performed**  
+Calculations are executed using standard mathematical operators applied to the numeric variables. The addition operator (`+`) is used to sum the individual expense amounts together to find the total spending. Then, the subtraction operator (`-`) is used to deduct that total expense amount from the initial total budget to establish the remaining balance.
+
+**6. How functions help organize the code**  
+Functions (`calculateTotalExpenses` and `calculateRemainingBalance`) encapsulate the mathematical logic into distinct, reusable blocks. By moving the "math" out of the main flow of the script, the code becomes modular and much easier to read. It separates the data collection phase from the calculation phase. If the app needs to be expanded later (for example, adding a loop to accept 10 expenses instead of 2), the core calculation logic inside the functions won't need to be rewritten.
