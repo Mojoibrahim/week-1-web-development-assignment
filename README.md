@@ -72,3 +72,54 @@ Calculations are executed using standard mathematical operators applied to the n
 
 **6. How functions help organize the code**  
 Functions (`calculateTotalExpenses` and `calculateRemainingBalance`) encapsulate the mathematical logic into distinct, reusable blocks. By moving the "math" out of the main flow of the script, the code becomes modular and much easier to read. It separates the data collection phase from the calculation phase. If the app needs to be expanded later (for example, adding a loop to accept 10 expenses instead of 2), the core calculation logic inside the functions won't need to be rewritten.
+
+## Project Overview & Weekly Progress
+
+### Improvements Made to SpendWise
+This week, SpendWise was updated from a static layout into a fully interactive, data-driven budgeting web application. Key enhancements include:
+* **Dynamic Expense Tracking:** Users can now add new expenses via an interactive form and remove them on demand.
+* **Live Financial Summary:** Total budget, total spent, and remaining balance calculate automatically with every update.
+* **Visual Status Alerts:** Context-aware feedback banners display immediately to warn users if they approach or exceed their budget limit.
+* **Persistent DOM Rendering:** Expense records and summary statistics are generated and updated directly in the browser interface without page reloads.
+
+---
+
+### Key Technical Concepts Implemented
+
+#### 1. Conditional Logic (`if / else`)
+Conditional statements evaluate the user's financial state to deliver real-time visual feedback:
+* **Budget Status Evaluation:** The application compares the remaining balance against the overall budget:
+  * **Exceeded:** Triggers a red alert banner (`.danger`) warning the user that they have overspent.
+  * **Warning Threshold:** Triggers a yellow warning banner (`.warning`) when remaining funds fall to 20% or less of the total budget.
+  * **On Track:** Displays a green confirmation banner (`.success`) when spending remains within normal limits.
+* **Input Validation:** Conditionals ensure that negative amounts, empty names, or invalid budget values cannot corrupt the application state.
+
+#### 2. Array Storage & Data Processing
+Instead of keeping separate variables for each line item, SpendWise manages all financial records using JavaScript arrays and objects:
+* **Data Structure:** Expenses are stored in a central array (`expenses = []`), where each entry is an object containing `id`, `name`, `amount`, and `category`.
+* **Collection Operations:**
+  * `.push()` adds new expense records dynamically upon form submission.
+  * `.filter()` removes specific items by matching unique `id` values when a user clicks a delete button.
+* **Loop Iteration:** Standard loops iterate through the `expenses` array to sum up costs for the dashboard summary and render each record into the user interface.
+
+#### 3. Dynamic DOM Manipulation
+The Document Object Model (DOM) is updated programmatically to ensure the browser displays fresh data immediately:
+* **Element Selection:** `document.getElementById()` captures key UI targets such as total displays, form inputs, and container elements.
+* **Content & Style Updates:** `.textContent` updates dollar amounts across the dashboard summary, while `.classList` toggles display states and alert color themes (`.success`, `.warning`, `.danger`, `.hidden`).
+* **Node Generation:** `document.createElement()` and `.appendChild()` dynamically construct structured HTML list items (`<li>`) for each stored expense record.
+
+#### 4. Event-Driven User Interactions
+SpendWise relies on event listeners to seamlessly bridge user input with application logic:
+* **Form Submissions (`submit`):** Event listeners attached to the budget and expense forms trigger on user submission. Calling `e.preventDefault()` stops default browser reloads and redirects control to JavaScript handling functions.
+* **Dynamic Action Triggers (`click`):** Action handlers bound to element buttons enable real-time deletion of individual records, immediately recalculating dashboard totals upon execution.
+
+---
+
+### Challenges Encountered & Resolutions
+
+* **Challenge — Page Reloading on Form Submit:** Submitting forms initially caused the browser to reload, resetting all stored array data and display values.
+  * *Resolution:* Applied `e.preventDefault()` inside form event listeners to prevent the default browser refresh and allow JavaScript to manage updates in memory.
+* **Challenge — Duplicate Records and Stale UI:** Re-rendering the expense list appended new items onto older elements, creating duplicate entries on the page.
+  * *Resolution:* Cleared the target element container (`expenseList.innerHTML = ''`) at the beginning of the render function before iterating through the array to generate fresh elements.
+* **Challenge — String Concatenation in Calculations:** Numeric input values retrieved from DOM elements were treated as text strings, leading to incorrect string concatenation instead of mathematical addition.
+  * *Resolution:* Wrapped raw input values with `parseFloat()` to guarantee mathematical operations execute on valid floating-point numbers.
