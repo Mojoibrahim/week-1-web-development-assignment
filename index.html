@@ -4,250 +4,137 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SpendWise - Dashboard</title>
-    <!-- Google Fonts Import -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-    
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>SpendWise</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active">Dashboard</a>
+                <a href="#" class="nav-item">Transactions</a>
+                <a href="#" class="nav-item">Budgets</a>
+                <a href="#" class="nav-item">Reports</a>
+                <a href="#" class="nav-item">Settings</a>
+            </nav>
+        </aside>
 
-<!-- Dashboard Shell (CSS Grid Container) -->
-<div class="dashboard-container">
-    
-    <!-- Sidebar / Navigation Menu -->
-    <aside class="sidebar">
-        <div class="sidebar-header">
-            <h2>SpendWise</h2>
-        </div>
-        <nav class="sidebar-nav">
-            <a href="#" class="nav-item active">Dashboard</a>
-            <a href="#" class="nav-item">Transactions</a>
-            <a href="#" class="nav-item">Budgets</a>
-            <a href="#" class="nav-item">Reports</a>
-            <a href="#" class="nav-item">Settings</a>
-        </nav>
-    </aside>
-
-    <!-- Main Content Area -->
-    <main class="main-content">
-        
-        <!-- Header Card -->
-        <header class="header-card">
-            <div class="header-title">
-                <img src="SpendWise-Logo.jpeg" alt="SpendWise Logo" width="40" class="logo-img">
-                <h1>My Budget Tracker</h1>
-            </div>
-            <h2>Track your income and expenses in one place.</h2>
-        </header>
-
-        <!-- Static Financial Category Cards (Grid Container) -->
-        <section class="dashboard-cards">
-            <div class="card" tabindex="0">
-                <h3>Food</h3>
-                <p class="amount">$350.00</p>
-            </div>
-            <div class="card" tabindex="0">
-                <h3>Transport</h3>
-                <p class="amount">$120.00</p>
-            </div>
-            <div class="card" tabindex="0">
-                <h3>Rent</h3>
-                <p class="amount">$1,200.00</p>
-            </div>
-            <div class="card" tabindex="0">
-                <h3>Entertainment</h3>
-                <p class="amount">$80.00</p>
-            </div>
-            <div class="card" tabindex="0">
-                <h3>Savings</h3>
-                <p class="amount">$500.00</p>
-            </div>
-            <div class="card" tabindex="0">
-                <h3>Utilities</h3>
-                <p class="amount">$150.00</p>
-            </div>
-        </section>
-
-        <!-- Add Expense Card -->
-        <section class="add-expense">
-            <h3>Add Expense</h3>
-            
-            <details class="expense-guide">
-                <summary>Guide: How to record your expenses</summary>
-                <ol>
-                    <li>Enter a brief description in the <strong>Expense name</strong> field.</li>
-                    <li>Input the numerical value in the <strong>Amount</strong> field.</li>
-                    <li>Select the best matching <strong>Category</strong> from the dropdown.</li>
-                    <li>Choose the specific transaction <strong>Date</strong>.</li>
-                    <li>Click <strong>Add Expense</strong> to record it to your tracker.</li>
-                </ol>
-            </details>
-
-            <form>
-                <div class="form-group">
-                    <label for="expense-name">The Expense name:</label>
-                    <input type="text" id="expense-name" placeholder="Enter expense name">
+        <main class="main-content">
+            <header class="header-card">
+                <div class="header-title">
+                    <img src="SpendWise-Logo.jpeg" alt="SpendWise Logo" width="40" class="logo-img">
+                    <h1>My Budget Tracker</h1>
                 </div>
-                
-                <div class="form-group">
-                    <label for="expense-amount">The Amount:</label>
-                    <input type="number" id="expense-amount" placeholder="Enter amount">
+                <h2>Track your income and expenses in one place.</h2>
+            </header>
+
+            <section class="dashboard-cards" aria-label="Expense categories">
+                <div class="card" tabindex="0">
+                    <h3>Food</h3>
+                    <p class="amount">$350.00</p>
                 </div>
-                
-                <div class="form-group">
-                    <label for="expense-category">The Category:</label>
-                    <select id="expense-category">
-                        <option value="" disabled selected>Select category</option>
-                        <option value="Food">Food</option>
-                        <option value="Transport">Transport</option>
-                        <option value="Rent">Rent</option>
-                        <option value="Entertainment">Entertainment</option>
-                        <option value="Other">Other</option>
-                    </select>
+                <div class="card" tabindex="0">
+                    <h3>Transport</h3>
+                    <p class="amount">$120.00</p>
                 </div>
-
-                <div class="form-group">
-                    <label for="expense-date">The Date:</label>
-                    <input type="date" id="expense-date">
+                <div class="card" tabindex="0">
+                    <h3>Rent</h3>
+                    <p class="amount">$1,200.00</p>
                 </div>
+                <div class="card" tabindex="0">
+                    <h3>Entertainment</h3>
+                    <p class="amount">$80.00</p>
+                </div>
+                <div class="card" tabindex="0">
+                    <h3>Savings</h3>
+                    <p class="amount">$500.00</p>
+                </div>
+                <div class="card" tabindex="0">
+                    <h3>Utilities</h3>
+                    <p class="amount">$150.00</p>
+                </div>
+            </section>
 
-                <button type="button">Add Expense</button>
-            </form>
-        </section>
+            <section class="your-expense">
+                <h3>Set Monthly Budget</h3>
+                <form id="budget-form">
+                    <div class="form-group">
+                        <label for="monthly-budget-input">Total Budget:</label>
+                        <input type="number" id="monthly-budget-input" min="0" step="0.01" placeholder="Enter monthly budget">
+                    </div>
+                    <button type="submit">Set Budget</button>
+                </form>
+            </section>
 
-        <!-- Expense Table Card -->
-        <section class="your-expense">
-            <h3>Your Expenses</h3>
-            <div class="table-responsive">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Amount</th>
-                            <th>Category</th>
-                            <th>Date</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Groceries</td>
-                            <td>$85.50</td>
-                            <td>Food</td>
-                            <td>2026-09-20</td>
-                        </tr>
-                        <tr>
-                            <td>Electricity Bill</td>
-                            <td>$120.00</td>
-                            <td>Utilities</td>
-                            <td>2026-09-21</td>
-                        </tr>
-                        <tr>
-                            <td>Internet Subscription</td>
-                            <td>$60.00</td>
-                            <td>Utilities</td>
-                            <td>2026-09-22</td>
-                        </tr>
-                        <tr>
-                            <td>Coffee Shop</td>
-                            <td>$12.75</td>
-                            <td>Dining Out</td>
-                            <td>2026-09-23</td>
-                        </tr>
-                        <tr>
-                            <td>Gasoline</td>
-                            <td>$45.00</td>
-                            <td>Transportation</td>
-                            <td>2026-09-24</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SpendWise - Personal Expense Tracker</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div class="app-container">
-    <header class="app-header">
-      <h1>SpendWise Dashboard</h1>
-      <p>Track expenses, set limits, and control your budget.</p>
-    </header>
+            <section class="dashboard-cards" aria-label="Budget summary">
+                <div class="card">
+                    <h3>Total Budget</h3>
+                    <p class="amount" id="total-budget-display">$0.00</p>
+                </div>
+                <div class="card">
+                    <h3>Total Spent</h3>
+                    <p class="amount" id="total-spent-display">$0.00</p>
+                </div>
+                <div class="card">
+                    <h3>Remaining Budget</h3>
+                    <p class="amount" id="remaining-budget-display">$0.00</p>
+                </div>
+            </section>
+            <div id="budget-status-alert" class="alert-banner hidden" role="status"></div>
 
-    <!-- Budget Setup Form -->
-    <section class="card">
-      <h2>Set Monthly Budget</h2>
-      <form id="budget-form">
-        <div class="form-group">
-          <label for="monthly-budget-input">Total Budget ($)</label>
-          <input type="number" id="monthly-budget-input" placeholder="e.g. 1000" min="0" step="0.01" required>
-        </div>
-        <button type="submit" class="btn btn-primary">Set Budget</button>
-      </form>
-    </section>
+            <section class="add-expense">
+                <h3>Add Expense</h3>
+                <details class="expense-guide">
+                    <summary>Guide: How to record your expenses</summary>
+                    <ol>
+                        <li>Enter a brief description in the <strong>Expense name</strong> field.</li>
+                        <li>Input the numerical value in the <strong>Amount</strong> field.</li>
+                        <li>Select the best matching <strong>Category</strong> from the dropdown.</li>
+                        <li>Choose the specific transaction <strong>Date</strong>.</li>
+                        <li>Click <strong>Add Expense</strong> to record it to your tracker.</li>
+                    </ol>
+                </details>
 
-    <!-- Expense Entry Form -->
-    <section class="card">
-      <h2>Add New Expense</h2>
-      <form id="expense-form">
-        <div class="form-row">
-          <div class="form-group">
-            <label for="expense-name">Description</label>
-            <input type="text" id="expense-name" placeholder="e.g. Groceries" required>
-          </div>
-          <div class="form-group">
-            <label for="expense-amount">Amount ($)</label>
-            <input type="number" id="expense-amount" placeholder="e.g. 75.50" min="0.01" step="0.01" required>
-          </div>
-          <div class="form-group">
-            <label for="expense-category">Category</label>
-            <select id="expense-category" required>
-              <option value="Food">Food</option>
-              <option value="Utilities">Utilities</option>
-              <option value="Entertainment">Entertainment</option>
-              <option value="Transport">Transport</option>
-              <option value="Other">Other</option>
-            </select>
-          </div>
-        </div>
-        <button type="submit" class="btn btn-secondary">Add Expense</button>
-      </form>
-    </section>
+                <form id="expense-form">
+                    <div class="form-group">
+                        <label for="expense-name">The Expense name:</label>
+                        <input type="text" id="expense-name" placeholder="Enter expense name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="expense-amount">The Amount:</label>
+                        <input type="number" id="expense-amount" min="0.01" step="0.01" placeholder="Enter amount" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="expense-category">The Category:</label>
+                        <select id="expense-category" required>
+                            <option value="" disabled selected>Select category</option>
+                            <option value="Food">Food</option>
+                            <option value="Transport">Transport</option>
+                            <option value="Rent">Rent</option>
+                            <option value="Entertainment">Entertainment</option>
+                            <option value="Utilities">Utilities</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="expense-date">The Date:</label>
+                        <input type="date" id="expense-date">
+                    </div>
+                    <button type="submit">Add Expense</button>
+                </form>
+            </section>
 
-    <!-- Dashboard Summary Cards -->
-    <section class="dashboard-grid">
-      <div class="stat-card">
-        <h3>Total Budget</h3>
-        <p id="total-budget-display">$0.00</p>
-      </div>
-      <div class="stat-card">
-        <h3>Total Spent</h3>
-        <p id="total-spent-display">$0.00</p>
-      </div>
-      <div class="stat-card">
-        <h3>Remaining</h3>
-        <p id="remaining-budget-display">$0.00</p>
-      </div>
-    </section>
-
-    <!-- Budget Feedback Alert -->
-    <div id="budget-status-alert" class="alert-banner hidden"></div>
-
-    <!-- Expense List -->
-    <section class="card">
-      <h2>Expense Records</h2>
-      <ul id="expense-list" class="expense-list">
-        <!-- Dynamic content injected here via JavaScript -->
-      </ul>
-    </section>
-  </div>
-
-  <script src="app.js"></script>
+            <section class="your-expense">
+                <h3>Your Expenses</h3>
+                <ul id="expense-list" class="expense-list"></ul>
+            </section>
+        </main>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
