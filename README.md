@@ -1,6 +1,6 @@
 # SpendWise - Dashboard Shell
 
-SpendWise is a responsive, modern personal finance dashboard shell built with HTML5 and CSS3. It serves as the visual foundation for tracking income, expenses, and financial health.
+SpendWise is a responsive, modern personal finance dashboard built with HTML5, CSS3, and JavaScript. It serves as an interactive platform for setting budgets, tracking expenses, and monitoring financial health in real time.
 
 ## Layout & Design Architecture
 
@@ -12,6 +12,8 @@ The dashboard is built using modern CSS layout techniques without relying on abs
 4. **CSS Custom Properties (Variables)**: Standardizes colors, fonts, shadows, and spacing across the application in the `:root` selector.
 5. **Dark Mode Support**: Uses `@media (prefers-color-scheme: dark)` to automatically update CSS variables when system dark mode is enabled.
 6. **Responsive Design**: Collapses into a single-column stacked layout on screens under `768px`.
+
+---
 
 ## Page Components & Functionality
 
@@ -25,53 +27,40 @@ The dashboard is built using modern CSS layout techniques without relying on abs
 
 ### 3. Financial Category Cards (`<section class="dashboard-cards">`)
 * **Purpose**: High-level financial summary at a glance.
-* **Details**: Contains 6 static cards representing key expense and savings categories (*Food*, *Transport*, *Rent*, *Entertainment*, *Savings*, *Utilities*).
+* **Details**: Contains static cards representing key expense categories (*Food*, *Transport*, *Rent*, *Entertainment*, *Savings*, *Utilities*).
 * **Micro-interactions**: Features a sub-250ms lift animation (`translateY(-4px)`), elevated box-shadow, and focus ring when hovered or navigated using the keyboard (`tabindex="0"`).
 
 ### 4. Add Expense Section (`<section class="add-expense">`)
 * **Purpose**: Interface for entering new financial records.
 * **Details**:
   * **Collapsible Guide**: Uses HTML `<details>` and `<summary>` tags to give users step-by-step instructions on recording expenses without cluttering the screen.
-  * **Form Controls**: Flexbox-aligned form inputs for Expense Name, Amount, Category dropdown, and Transaction Date.
+  * **Form Controls**: Flexbox-aligned form inputs for Expense Name, Amount, Category dropdown, and Transaction Date bound to `id="expense-form"`.
 
-### 5. Expense History Table (`<section class="your-expense">`)
-* **Purpose**: Detailed list of recent transactions.
-* **Details**: Features a clean HTML `<table>` with alternating row colors, table headers, and hover highlights. Wrapped in a responsive overflow container for smaller devices.
+### 5. Expense Records Section (`<section class="your-expense">`)
+* **Purpose**: Detailed dynamic rendering area for stored transactions.
+* **Details**: Contains an unordered list `<ul id="expense-list">` populated programmatically via JavaScript.
 
-### 6. Video Tips Section (`<section class="video-section">`)
-* **Purpose**: Educational area for financial literacy.
-* **Details**: Houses an embedded YouTube iframe video featuring budgeting tips for users.
+---
 
+## How Event Listeners, Loops, and DOM Updates Power the Dashboard
 
-## How to Run
-1. Open `index.html` directly in any standard web browser.
-2. Toggle device view in DevTools to test responsiveness below 768px.
-3. Switch your OS theme to dark mode to test auto-theming.
+The interactive functionality of SpendWise operates on an event-driven data pipeline:
 
+1. **Event Listeners (Handling User Input):**
+   * Form submit listeners attached to `#budget-form` and `#expense-form` capture user inputs for budget goals and new expense entries.
+   * `e.preventDefault()` stops default page reloads, ensuring the application maintains state seamlessly in memory.
+   * Button click handlers trigger inline deletion routines (`deleteExpense(id)`) to remove specific records.
 
-# SpendWise - Budgeting Application
+2. **Data Processing & Loops (Calculating State):**
+   * Upon every addition or deletion, the core logic pipeline executes `updateDashboard()`.
+   * A standard `for` loop iterates through the `expenses` array in `calculateTotalSpent()` to aggregate costs.
+   * Conditional checks (`if / else`) evaluate remaining funds against budget thresholds to determine warning alert levels (`.success`, `.warning`, `.danger`).
 
-## Project Overview
+3. **Dynamic DOM Updates (Rendering the UI):**
+   * Text nodes (`#total-budget-display`, `#total-spent-display`, `#remaining-budget-display`) are updated directly using `.textContent`.
+   * `renderExpenseList()` clears the existing container (`expenseList.innerHTML = ''`) and loops through the `expenses` array to construct new `<li>` elements using `document.createElement()` and `.appendChild()`.
 
-**1. What your SpendWise project does**  
-SpendWise is a foundational personal finance application that helps users track their monthly spending. It takes a user's total budget and specific expenses, calculates how much money has been spent, and outputs a detailed summary report in the console that clearly displays the user's remaining balance.
-
-## Technical Details
-
-**2. The JavaScript concepts implemented**  
-The code implements several core JavaScript concepts, including variable declaration using `const`, data type conversion (using `parseFloat` to turn strings into numbers), browser interaction methods (`prompt()`), arithmetic operators (`+`, `-`), function declaration and invocation, string interpolation using template literals (backticks), and basic conditional logic (`if/else`) for outputting dynamic status messages.
-
-**3. How variables are being used**  
-Variables act as temporary storage containers throughout the application's lifecycle. They store the initial raw text typed by the user (`totalBudgetInput`), the parsed numeric versions of that text (`totalBudget`), the names of the expenses, and the final calculated totals (`totalExpenses`, `remainingBalance`). This allows the script to reference, pass around, and display the data at different stages.
-
-**4. How user input is collected**  
-User input is collected dynamically via the browser using the built-in `prompt()` method, which triggers popup dialog boxes asking the user for specific information. Because `prompt()` always captures data as a string (text), `parseFloat()` is immediately used to convert the inputted numbers into actual floating-point numeric values so they can be accurately used in mathematical operations. 
-
-**5. How calculations are performed**  
-Calculations are executed using standard mathematical operators applied to the numeric variables. The addition operator (`+`) is used to sum the individual expense amounts together to find the total spending. Then, the subtraction operator (`-`) is used to deduct that total expense amount from the initial total budget to establish the remaining balance.
-
-**6. How functions help organize the code**  
-Functions (`calculateTotalExpenses` and `calculateRemainingBalance`) encapsulate the mathematical logic into distinct, reusable blocks. By moving the "math" out of the main flow of the script, the code becomes modular and much easier to read. It separates the data collection phase from the calculation phase. If the app needs to be expanded later (for example, adding a loop to accept 10 expenses instead of 2), the core calculation logic inside the functions won't need to be rewritten.
+---
 
 ## Project Overview & Weekly Progress
 
@@ -123,3 +112,10 @@ SpendWise relies on event listeners to seamlessly bridge user input with applica
   * *Resolution:* Cleared the target element container (`expenseList.innerHTML = ''`) at the beginning of the render function before iterating through the array to generate fresh elements.
 * **Challenge — String Concatenation in Calculations:** Numeric input values retrieved from DOM elements were treated as text strings, leading to incorrect string concatenation instead of mathematical addition.
   * *Resolution:* Wrapped raw input values with `parseFloat()` to guarantee mathematical operations execute on valid floating-point numbers.
+
+---
+
+## How to Run
+1. Open `index.html` directly in any standard web browser.
+2. Set a monthly budget and add expense entries using the form inputs.
+3. Observe how dashboard values, expense lists, and visual alert banners update dynamically.
